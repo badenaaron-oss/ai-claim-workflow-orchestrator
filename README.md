@@ -4,6 +4,61 @@ An AI workflow agent that routes insurance claim cases through intake, validatio
 
 This system determines **what happens next in the claim process** based on structured claim data.
 
+## Multi-Agent System Overview
+
+This project is part of a multi-agent AI workflow for handling insurance claim inquiries.
+
+The system separates **data intake, safety controls, workflow routing, deterministic decisions, and customer communication**.
+
+```mermaid
+flowchart TD
+
+A[Policyholder Inquiry]
+
+subgraph AI Agents
+B[AI Claim Intake Assistant]
+C[🚦 Claim Workflow Orchestrator]
+D[Coverage Explanation Assistant]
+end
+
+subgraph Safety Layer
+E[Input Sanitation + Validation]
+F[Structured Claim Data]
+end
+
+subgraph Deterministic Decision Layer
+G[Coverage Decision Engine]
+H[Structured Decision Output]
+end
+
+subgraph Customer Communication
+I[PHONE_SCRIPT]
+J[EMAIL_RESPONSE]
+K[INTERNAL_SUMMARY]
+end
+
+A --> B
+B --> E
+E --> F
+F --> C
+C --> G
+G --> H
+H --> D
+D --> I
+D --> J
+D --> K
+
+%% styling
+
+classDef ai fill:#ffe599,stroke:#333,stroke-width:2px
+classDef safety fill:#d9ead3,stroke:#333,stroke-width:2px
+classDef decision fill:#cfe2f3,stroke:#333,stroke-width:2px
+
+class B,C,D ai
+class E,F safety
+class G,H decision
+```
+
 ---
 
 ## System Role
