@@ -31,6 +31,10 @@ G[Coverage Decision Engine]
 H[Structured Decision Output]
 end
 
+subgraph Human Review
+L[Benefits Specialist Review]
+end
+
 subgraph Customer Communication
 I[PHONE_SCRIPT]
 J[EMAIL_RESPONSE]
@@ -49,6 +53,8 @@ H -->|decision status + confidence| E
 
 E -->|communication request| F
 
+E -->|manual review required| L
+
 F -->|customer explanation| I
 F -->|customer explanation| J
 F -->|internal summary| K
@@ -59,15 +65,14 @@ classDef ai fill:#ffe599,stroke:#333,stroke-width:2px
 classDef orchestrator fill:#f6b26b,stroke:#333,stroke-width:4px
 classDef safety fill:#d9ead3,stroke:#333,stroke-width:2px
 classDef decision fill:#cfe2f3,stroke:#333,stroke-width:2px
+classDef human fill:#f4cccc,stroke:#333,stroke-width:2px
 
 class B,F ai
 class E orchestrator
 class C,D safety
 class G,H decision
+class L human
 ```
-
----
-
 ## Related Projects
 
 This orchestrator connects two other AI workflow agents:
