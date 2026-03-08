@@ -37,21 +37,21 @@ J[EMAIL_RESPONSE]
 K[INTERNAL_SUMMARY]
 end
 
-A --> B
-B --> C
-C --> D
-D --> E
+A -->|claim description| B
+B -->|raw intake data| C
+C -->|validated claim data| D
+D -->|claim state| E
 
-E --> G
-G --> H
+E -->|decision request| G
+G -->|coverage decision| H
 
-H --> E
+H -->|decision status + confidence| E
 
-E --> F
+E -->|communication request| F
 
-F --> I
-F --> J
-F --> K
+F -->|customer explanation| I
+F -->|customer explanation| J
+F -->|internal summary| K
 
 %% styling
 
@@ -64,18 +64,6 @@ class B,F ai
 class E orchestrator
 class C,D safety
 class G,H decision
-```
-
-## Example Workflow Decisions
-
-```
-missing_information → request documents
-
-likely_covered → route to claim submission
-
-uncertain → escalate to specialist
-
-denied → generate explanation
 ```
 
 ---
