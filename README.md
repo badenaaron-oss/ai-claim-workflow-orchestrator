@@ -17,13 +17,13 @@ A[Policyholder Inquiry]
 
 subgraph AI Agents
 B[AI Claim Intake Assistant]
-C[🚦 Claim Workflow Orchestrator]
-D[Coverage Explanation Assistant]
+E[🚦 Claim Workflow Orchestrator]
+F[Coverage Explanation Assistant]
 end
 
 subgraph Safety Layer
-E[Input Sanitation + Validation]
-F[Structured Claim Data]
+C[Input Sanitation + Validation]
+D[Structured Claim Data]
 end
 
 subgraph Deterministic Decision Layer
@@ -38,73 +38,33 @@ K[INTERNAL_SUMMARY]
 end
 
 A --> B
-B --> E
-E --> F
-F --> C
-C --> G
+B --> C
+C --> D
+D --> E
+
+E --> G
 G --> H
-H --> D
-D --> I
-D --> J
-D --> K
+
+H --> E
+
+E --> F
+
+F --> I
+F --> J
+F --> K
 
 %% styling
 
 classDef ai fill:#ffe599,stroke:#333,stroke-width:2px
+classDef orchestrator fill:#f6b26b,stroke:#333,stroke-width:4px
 classDef safety fill:#d9ead3,stroke:#333,stroke-width:2px
 classDef decision fill:#cfe2f3,stroke:#333,stroke-width:2px
 
-class B,C,D ai
-class E,F safety
+class B,F ai
+class E orchestrator
+class C,D safety
 class G,H decision
 ```
-
----
-
-## System Role
-
-The Workflow Orchestrator evaluates the current claim state and decides the next workflow action.
-
-Examples:
-
-- request missing information
-- route to coverage decision engine
-- escalate to specialist review
-- generate customer explanation
-
----
-
-## Architecture Overview
-
-```mermaid
-flowchart TD
-
-A[Policyholder Inquiry]
-
-B[AI Claim Intake Assistant]
-
-C[Input Sanitation + Validation]
-
-D[Structured Claim Data]
-
-E[🚦 Workflow Orchestrator]
-
-F[Coverage Decision Engine]
-
-G[Coverage Explanation Assistant]
-
-H[Customer Response]
-
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-G --> H
-```
-
----
 
 ## Example Workflow Decisions
 
