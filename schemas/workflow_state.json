@@ -1,1 +1,7 @@
-
+{
+  "claim_id": "string",
+  "intake_status": "complete | missing_information | escalation_required",
+  "coverage_likelihood": "likely_covered | uncertain | unknown",
+  "current_stage": "intake | validation | decision | explanation",
+  "next_action": "request_information | route_to_decision_engine | escalate_specialist | generate_explanation"
+}
